@@ -12,25 +12,5 @@ namespace Domain
         private int AmountRooms { get; set; }
         private double Total { get; set; }
         private RoomType roomType { get; set; }
-
-        public TimeSpan GetAmountDays()
-        {
-            return DateEnd.Subtract(DateStart);
-        }
-
-        public int GetAmountRooms()
-        {
-            return AmountRooms;
-        }
-
-        public void SetTotal(double total)
-        {
-            this.Total = total;
-        }
-
-        public double GetTotal()
-        {
-            return this.Total;
-        }
     }
 }
