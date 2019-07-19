@@ -7,13 +7,16 @@ namespace Services
 {
     public class UnLock : IUnLock
     {
-        public void MakeUnLock(List<Room> rooms, int amount, string roomType)
+        public void MakeUnLock(int amountAvailable, RoomType roomType, List<Room> rooms)
         {
-            var listType = rooms.FindAll(x => x.RoomType.ToString().Equals(roomType));
-            for (int i = 0; i < amount; i++)
+            rooms.ForEach(x =>
             {
-                listType[i].Locked = false;
-            }
+                if (x.RoomType == roomType)
+                {
+                    x.Available = true;
+                    x.AmountAvailable = amountAvailable;
+                }
+            });
         }
     }
 }

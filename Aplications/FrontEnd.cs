@@ -29,13 +29,13 @@ namespace Aplications
             Console.WriteLine("     6 - Quarto Lux  ");
         }
 
-        public static int InputRoomsbyType()
+        public static int InsertRoomsbyType()
         {
             Console.WriteLine(" Entre com a quantidade de quartos ");
             return Convert.ToInt32(Console.Read());
         }
 
-        public static int InputAvailablesRoomsbyType()
+        public static int InsertAvailablesRoomsbyType()
         {
             Console.WriteLine(" Entre com a quantidade de quartos disponíveis ");
             return Convert.ToInt32(Console.Read());
@@ -49,7 +49,7 @@ namespace Aplications
             Console.WriteLine("     9 - Quarto " + RoomType.Lux.ToString());
         }
 
-        public static int InputAmountAvailablesRooms()
+        public static int InsertAmountAvailablesRooms()
         {
             Console.WriteLine("Entre com a quantidade de quartos liberados ");
             return Convert.ToInt32(Console.ReadLine());
@@ -63,9 +63,9 @@ namespace Aplications
             Console.WriteLine("     12 - Quarto " + RoomType.Lux.ToString());
         }
 
-        public static int InputAmountLockRooms()
+        public static int InsertAmountLockRooms()
         {
-            Console.WriteLine(" Entre com a quantidade de quartos travados ");
+            Console.WriteLine(" Entre com a quantidade de quartos a serem travados ");
             return Convert.ToInt32(Console.ReadLine());
         }
 
@@ -86,15 +86,19 @@ namespace Aplications
         public static void MenuListAmountRommsByType()
         {
             Console.WriteLine("     15 - Listar Quantidade de Quartos Por Tipo ");
-            //Console.WriteLine("Quantidades de Quartos Single => " + roomsSingle);
-            //Console.WriteLine("Quantidades de Quartos Standard => " + roomsStandard);
-            //Console.WriteLine("Quantidades de Quartos Lux => " + roomsLuxo);
         }
 
         public static void Exit()
         {
             Console.WriteLine("     16 - Sair ");
-            //return Convert.ToInt32(Console.ReadLine());
+        }
+
+        /// <summary>
+        /// Método responsável por limpar a tela
+        /// </summary>
+        public static void MenuClearScreen()
+        {
+            Console.Clear();
         }
     }
 }

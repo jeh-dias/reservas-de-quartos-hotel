@@ -16,13 +16,15 @@ namespace Services
             var roomsAvailables = rooms.FindAll(x => !x.Locked && !x.Busy).Count;
 
             var lockedsCount = GetAmountPercent(amountRooms, roomsLocks);
-            var unlockedsCount = GetAmountPercent(amountRooms, roomsBusys);
+            var busiesCount = GetAmountPercent(amountRooms, roomsBusys);
             var availablesCount = GetAmountPercent(amountRooms, roomsAvailables);
 
-            //FrontEnd.ReportByRooms(lockedsCount, unlockedsCount, availablesCount);
+            Console.WriteLine(" Quartos Liberados => " + availablesCount);
+            Console.WriteLine(" Quartos Ocupados => " + busiesCount);
+            Console.WriteLine(" Quartos Travados => " + lockedsCount);
         }
 
-        public double GetAmountPercent(int amount, int amountType)
+        public static double GetAmountPercent(int amount, int amountType)
         {
             return amount / amountType;
         }

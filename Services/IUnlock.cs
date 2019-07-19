@@ -6,6 +6,6 @@ namespace Services
 {
     public interface IUnLock
     {
-        void MakeUnLock(List<Room> rooms, int amount, string roomType);
+        void MakeUnLock(int amount, RoomType roomType, List<Room> rooms);
     }
 }

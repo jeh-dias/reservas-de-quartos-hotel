@@ -7,7 +7,9 @@ namespace Services
 {
     public interface IRoom
     {
-        void AddAmountRoomsByType(int amount, RoomType roomType);
-        void AddAmountAvailableRoomsByType();
+        void AddAmountRoomsByType(int amount, RoomType roomType, List<Room> rooms);
+        void AddAmountAvailableRoomsByType(int amount, RoomType roomType, List<Room> rooms);
+
+        void ListAllRooms(List<Room> rooms);
     }
 }

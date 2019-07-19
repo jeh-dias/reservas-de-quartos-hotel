@@ -7,13 +7,16 @@ namespace Services
 {
     public class Lock : ILock
     {
-        public void MakeLock(List<Room> rooms, int amount, string roomType)
+        public void MakeLock(int amountLock, RoomType roomType, List<Room> rooms)
         {
-            var listType = rooms.FindAll(x => x.RoomType.ToString().Equals(roomType));
-            for (int i = 0; i < amount; i++)
+            rooms.ForEach(x =>
             {
-                listType[i].Locked = true;
-            }
+                if (x.RoomType == roomType)
+                {
+                    x.Locked = true;
+                    x.AmountLock = amountLock;
+                }
+            });
         }
     }
 }

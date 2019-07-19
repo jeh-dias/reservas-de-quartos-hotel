@@ -7,6 +7,6 @@ namespace Services
 {
     public interface ILock
     {
-        void MakeLock(List<Room> rooms, int amount, string roomType);
+        void MakeLock(int amount, RoomType roomType, List<Room> rooms);
     }
 }
