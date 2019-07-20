@@ -12,16 +12,16 @@ namespace Application
     public class ViewIntermediate
     {
         private const int OPTION_EXIT = 8;
-        private RoomBusiness roomBusiness;
         private RoomService roomService;
+        private ReservationService reservationService;
         private List<Room> rooms;
         private LockViewModel lockViewModel;
         private LockViewModel unlockViewModel;
 
         public ViewIntermediate()
         {
-            roomBusiness = new RoomBusiness();
-            roomService = new RoomService(roomBusiness);
+            roomService = new RoomService(new RoomBusiness());
+            reservationService = new ReservationService(new ReservationBusiness());
         }
 
         public void StartReservation()
@@ -41,20 +41,38 @@ namespace Application
                         break;
                     case 2:
                         Console.Clear();
-                        rooms = roomService.Lock(View.LockUnlockRooms());
+                        rooms = roomService.Lock(View.LockRooms());
                         break;
                     case 3:
                         Console.Clear();
-                        //rooms = roomService.UnLock(View.UnlockUnlockRooms());
+                        rooms = roomService.UnLock(View.UnLockRooms());
                         break;
                     case 4:
                         Console.Clear();
-                        roomService.List(rooms);
+                        ListRooms(rooms);
+                        break;
+                    case 5:
+                        Console.Clear();
+                        reservationService.Insert(View.RegisterReservation());
+                        break;
+                    case 6:
+                        Console.Clear();
+                        ReportRooms(rooms);
                         break;
                     default:
                         break;
                 }
             }
+        }
+
+        public static void ListRooms(List<Room> rooms)
+        {
+            View.ListRooms(rooms);
+        }
+
+        public static void ReportRooms(List<Room> rooms)
+        {
+            View.ReportRooms(rooms);
         }
     }
 }

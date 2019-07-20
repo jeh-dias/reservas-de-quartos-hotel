@@ -34,7 +34,7 @@ namespace Repository
                 if (x.RoomType == unlockViewModel.RoomType)
                 {
                     x.Locked = false;
-                    x.AmountLock = unlockViewModel.Amount;
+                    x.AmountLock = (x.AmountLock - unlockViewModel.Amount);
                 }
             });
 

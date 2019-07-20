@@ -35,17 +35,5 @@ namespace Services
 
             return _roomBusiness.GetList();
         }
-
-        public void List(List<Room> rooms)
-        {
-            Console.Write("============Lista de Quartos ==========================");
-            Console.WriteLine();
-            foreach (var room in rooms)
-            {
-                Console.Write($" Tipo:{room.RoomType}    Quantidade: {room.Amount}");
-                Console.WriteLine();
-            }
-            Console.WriteLine("========================================================");
-        }
     }
 }

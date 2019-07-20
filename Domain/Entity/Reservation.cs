@@ -4,14 +4,14 @@ using System.Text;
 
 namespace Domain
 {
-    public class ReservationDomain
+    public class Reservation
     {
-        private Client Client { get; set; }
-        private DateTime DateStart { get; set; }
-        private DateTime DateEnd { get; set; }
-        private int AmountRooms { get; set; }
-        private double Total { get; set; }
-        private RoomType roomType { get; set; }
+        public Client Client { get; set; }
+        public DateTime DateStart { get; set; }
+        public DateTime DateEnd { get; set; }
+        public int AmountRooms { get; set; }
+        public double Total { get; set; }
+        public RoomType roomType { get; set; }
 
         public TimeSpan GetAmountDays()
         {
