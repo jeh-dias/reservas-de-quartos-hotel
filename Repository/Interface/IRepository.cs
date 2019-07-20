@@ -7,7 +7,7 @@ namespace Repository.Interface
 {
     public interface IRepository<T>
     {
-        void Add(T obj);
+        bool Add(T obj);
         List<T> GetList();
     }
 }

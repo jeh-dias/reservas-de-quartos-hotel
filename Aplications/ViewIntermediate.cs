@@ -1,5 +1,7 @@
 ﻿using Aplications;
+using Business;
 using Domain;
+using Domain.ViewModel;
 using Services;
 using System;
 using System.Collections.Generic;
@@ -10,12 +12,16 @@ namespace Application
     public class ViewIntermediate
     {
         private const int OPTION_EXIT = 8;
-        private static int amount;
-        private HotelServices services;
-        private Room room;
+        private RoomBusiness roomBusiness;
+        private RoomService roomService;
+        private List<Room> rooms;
+        private LockViewModel lockViewModel;
+        private LockViewModel unlockViewModel;
 
-        public ViewIntermediate() {
-            services = new HotelServices(new RoomConcret(), new Lock(), new UnLock(), new Reservation(), new Report());
+        public ViewIntermediate()
+        {
+            roomBusiness = new RoomBusiness();
+            roomService = new RoomService(roomBusiness);
         }
 
         public void StartReservation()
@@ -24,59 +30,31 @@ namespace Application
 
             while (option != OPTION_EXIT)
             {
-                FrontEnd.MenuInitial();
+                View.MenuInitial();
                 option = Convert.ToInt32(Console.ReadLine());
 
                 switch (option)
                 {
                     case 1:
-                        room = PackObject(FrontEnd.RegisterRooms());
-                        services.AddRooms(room);
+                        Console.Clear();
+                        rooms = roomService.Insert(View.RegisterRooms());
                         break;
                     case 2:
-                        //amount = Convert.ToInt32(FrontEnd.MenuAvailablesRooms());
-                        //services.MenuAvailablesRooms(amount, RoomType.Standard);
+                        Console.Clear();
+                        rooms = roomService.Lock(View.LockUnlockRooms());
                         break;
                     case 3:
-                        //amount = Convert.ToInt32(FrontEnd.MenuUnlockRooms());
-                        //services.MakeAmountRooms(amount, RoomType.Lux);
+                        Console.Clear();
+                        //rooms = roomService.UnLock(View.UnlockUnlockRooms());
                         break;
                     case 4:
-                        //amount = Convert.ToInt32(FrontEnd.MenuLockRooms());
-                        //services.MakeAmountRooms(amount, RoomType.Single);
-                        break;
-                    case 5:
-                        //amount = Convert.ToInt32(FrontEnd.MenuReservation());
-                        //services.MakeAmountRooms(amount, RoomType.Standard);
-                        break;
-                    case 6:
-                        //amount = Convert.ToInt32(FrontEnd.MenuReportByRooms());
-                        //MakeAmountRooms(amount, RoomType.Lux);
-                        break;
-                    case 7:
-                        //amount = Convert.ToInt32(FrontEnd.MenuListAmountRommsByType());
-                        services.MakeUnlocked(amount, RoomType.Single);
-                        break;
-                    case 8:
-                        //amount = Convert.ToInt32(FrontEnd.Exit());
-                        services.MakeUnlocked(amount, RoomType.Standard);
+                        Console.Clear();
+                        roomService.List(rooms);
                         break;
                     default:
                         break;
                 }
             }
-        }
-
-        public Room PackObject(string vet)
-        {
-            string[] roomObj = vet.Split(" ");
-            RoomType roomType = (RoomType)Convert.ToInt32(vet[1]);
-
-            return new Room
-            {
-                Amount = Convert.ToInt32(vet[0]),
-                RoomType = roomType,
-            };
         }
     }
 }

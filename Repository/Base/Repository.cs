@@ -24,14 +24,10 @@ namespace Repository.Base
             }
         }
 
-        public List<T> GetInstance()
-        {
-            return _list;
-        }
-
-        public void Add(T obj)
+        public bool Add(T obj)
         {
             _list.Add(obj);
+            return true;
         }
 
         public List<T> GetList()
