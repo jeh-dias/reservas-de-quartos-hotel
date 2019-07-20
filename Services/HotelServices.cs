@@ -12,7 +12,6 @@ namespace Services
         public readonly IReservation _reservation;
         public readonly IReport _report;
         public readonly IRoom _room;
-        private List<Room> rooms = new List<Room>();
 
         public HotelServices(IRoom room, ILock locked, IUnLock unlocked, IReservation reservation, IReport report)
         {
@@ -23,24 +22,24 @@ namespace Services
             _room = room;
         }
 
-        public void MakeAmountRooms(int amount, RoomType roomType)
+        public void AddRooms(Room room)
         {
-            _room.AddAmountRoomsByType(amount, roomType, rooms);
+            //_room.AddRooms(room);
         }
 
         public void MakeAmountAvailableRooms(int amount, RoomType roomType)
         {
-            _room.AddAmountAvailableRoomsByType(amount, roomType, rooms);
+            //_room.AddAmountAvailableRoomsByType(amount, roomType);
         }
 
         public void MakeLocked(int amount, RoomType roomType)
         {
-            _locked.MakeLock(amount, roomType,rooms);
+            //_locked.MakeLock(amount, roomType);
         }
 
         public void MakeUnlocked(int amount, RoomType roomType)
         {
-            _unlock.MakeUnLock(amount, roomType, rooms);
+            //_unlock.MakeUnLock(amount, roomType, rooms);
         }
 
         public void MakeReservation()
@@ -50,12 +49,12 @@ namespace Services
 
         public void MakeReport()
         {
-            _report.MakeReport(rooms);
+            //_report.MakeReport(rooms);
         }
 
         public void ListRooms()
         {
-            _room.ListAllRooms(rooms);
+            //_room.ListAllRooms(rooms);
         }
     }
 }

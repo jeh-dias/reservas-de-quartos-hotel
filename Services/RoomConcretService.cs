@@ -9,25 +9,12 @@ namespace Services
     {
         public void AddAmountAvailableRoomsByType(int amount, RoomType roomType, List<Room> rooms)
         {
-            rooms.Add(
-                new Room
-                {
-                    Amount = amount,
-                    RoomType = roomType,
-                    Available = true
-                }
-            );
+            throw new NotImplementedException();
         }
 
-        public void AddAmountRoomsByType(int amount, RoomType roomType, List<Room> rooms)
+        public void AddRooms(int amount, RoomType roomType)
         {
-            rooms.Add(
-                new Room
-                {
-                    Amount = amount,
-                    RoomType = roomType
-                }
-            );
+            throw new NotImplementedException();
         }
 
         public void ListAllRooms(List<Room> rooms)

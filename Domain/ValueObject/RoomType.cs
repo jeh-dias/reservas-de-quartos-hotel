@@ -5,8 +5,8 @@ using System.Text;
 namespace Domain
 {
     public enum RoomType {
-        Single,
-        Standard,
-        Lux
+        Single = 1,
+        Standard = 2,
+        Lux = 3
     };
 }

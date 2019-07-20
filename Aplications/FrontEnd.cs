@@ -7,98 +7,57 @@ namespace Aplications
 {
     public static class FrontEnd
     {
-        public static void Title()
+        public static void MenuInitial()
         {
             Console.WriteLine("         Sistema para reservas de quartos de um hotel ");
+            Console.WriteLine("         Segue os números abaixo para o tipo de quarto ");
+            Console.WriteLine("         1 - Single ");
+            Console.WriteLine("         2 - Standard ");
+            Console.WriteLine("         3 - Lux ");
+            Console.WriteLine("         =================================================");
+            Console.WriteLine("         1 - Cadastro de Quartos ");
+            Console.WriteLine("         2 - Lista de Quartos ");
+            Console.WriteLine("         3 - Reservas de Quartos ");
+            Console.WriteLine("         4 - Relatório de Quartos ");
+            Console.WriteLine("         5 - Liberação de Quartos ");
+            Console.WriteLine("         6 - Bloqueio de Quartos ");
             Console.WriteLine();
         }
 
-        public static void MenuRooms()
+        public static string RegisterRooms()
         {
-            Console.WriteLine(" Entre com a quantidade de quartos para cada tipo ");
-            Console.WriteLine("     1 - Quarto Single  ");
-            Console.WriteLine("     2 - Quarto Standard  ");
-            Console.WriteLine("     3 - Quarto Lux  ");
+            Console.WriteLine(" Entre com a quantidade e o tipo ");
+            return Console.Read().ToString();
         }
 
-        public static void MenuAvailablesRooms()
+        public static int MenuUnlockRooms()
         {
-            Console.WriteLine(" Entre com a quantidade de quartos disponíveis para cada tipo ");
-            Console.WriteLine("     4 - Quarto Single  ");
-            Console.WriteLine("     5 - Quarto Standard  ");
-            Console.WriteLine("     6 - Quarto Lux  ");
-        }
-
-        public static int InsertRoomsbyType()
-        {
-            Console.WriteLine(" Entre com a quantidade de quartos ");
+            Console.WriteLine(" Entre com a quantidade e o tipo do quarto liberado ");
             return Convert.ToInt32(Console.Read());
         }
 
-        public static int InsertAvailablesRoomsbyType()
+        public static int MenuLockRooms()
         {
-            Console.WriteLine(" Entre com a quantidade de quartos disponíveis ");
+            Console.WriteLine(" Entre com a quantidade e o tipo do quarto travado ");
             return Convert.ToInt32(Console.Read());
         }
 
-        public static void MenuUnlockRooms()
+        public static int MenuReservation()
         {
-            Console.WriteLine(" Liberar quartos por tipo ");
-            Console.WriteLine("     7 - Quarto " + RoomType.Single.ToString());
-            Console.WriteLine("     8 - Quarto " + RoomType.Standard.ToString());
-            Console.WriteLine("     9 - Quarto " + RoomType.Lux.ToString());
+            Console.WriteLine(" Reserva ");
+            return Convert.ToInt32(Console.Read());
         }
 
-        public static int InsertAmountAvailablesRooms()
+        public static int MenuReportByRooms()
         {
-            Console.WriteLine("Entre com a quantidade de quartos liberados ");
-            return Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine(" Relatórios por Quartos ");
+            return Convert.ToInt32(Console.Read());
         }
 
-        public static void MenuLockRooms()
+        public static int Exit()
         {
-            Console.WriteLine(" Travar quartos por tipo ");
-            Console.WriteLine("     10 - Quarto " + RoomType.Single.ToString());
-            Console.WriteLine("     11 - Quarto " + RoomType.Standard.ToString());
-            Console.WriteLine("     12 - Quarto " + RoomType.Lux.ToString());
-        }
-
-        public static int InsertAmountLockRooms()
-        {
-            Console.WriteLine(" Entre com a quantidade de quartos a serem travados ");
-            return Convert.ToInt32(Console.ReadLine());
-        }
-
-        public static void MenuReservation()
-        {
-            Console.WriteLine("     13 - Reserva ");
-            //Console.WriteLine("Entre com as informações para a Reserva ");
-            //Console.WriteLine("Entre com a data de início e fim ");
-            //Console.WriteLine("Entre com os dados do cliente ");
-            //return Convert.ToInt32(Console.ReadLine());
-        }
-
-        public static void MenuReportByRooms()
-        {
-            Console.WriteLine("     14 - Relatórios por Quartos ");
-        }
-
-        public static void MenuListAmountRommsByType()
-        {
-            Console.WriteLine("     15 - Listar Quantidade de Quartos Por Tipo ");
-        }
-
-        public static void Exit()
-        {
-            Console.WriteLine("     16 - Sair ");
-        }
-
-        /// <summary>
-        /// Método responsável por limpar a tela
-        /// </summary>
-        public static void MenuClearScreen()
-        {
-            Console.Clear();
+            Console.WriteLine(" 8 - Sair ");
+            return Convert.ToInt32(Console.Read());
         }
     }
 }
