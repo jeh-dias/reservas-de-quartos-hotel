@@ -8,8 +8,8 @@ using System.Text;
 namespace Services
 {
     /// <summary>
-    /// Classe responsável por receber dados da reserva passados na view
-    /// e enviar estes para a classe de regra de negócio
+    /// Classe responsável por receber dados da reserva 
+    /// e enviar para a classe de regra de negócio
     /// </summary>
     public class ReservationService
     {
@@ -20,9 +20,9 @@ namespace Services
             _reservationBusiness = reservationBusiness;
         }
 
-        public List<Reservation> Insert(Reservation reservation)
+        public List<Reservation> Insert(Reservation reservation, List<Room> rooms)
         {
-            _reservationBusiness.Add(reservation);
+            _reservationBusiness.Add(reservation, rooms);
 
             return _reservationBusiness.GetList();
         }       

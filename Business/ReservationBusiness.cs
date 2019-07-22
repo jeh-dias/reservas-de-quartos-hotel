@@ -16,12 +16,22 @@ namespace Business
         /// Porcentagem para o desconto - 10%
         /// </summary>
         private const double DESCONTO_DEZ_POR_CENTO = 0.10;
+        /// <summary>
+        /// Quantidade de diárias que possum desconto
+        /// </summary>
+        private const double DIARIAS_COM_DESCONTO = 5;
 
         private ReservationRepository _reservationRepository;
+        private Dictionary<int, double> priceRoomType = new Dictionary<int, double>();
+
+
 
         public ReservationBusiness()
         {
             _reservationRepository = new ReservationRepository();
+            priceRoomType.Add(1, 230);
+            priceRoomType.Add(2, 310);
+            priceRoomType.Add(3, 470);
         }
 
         /// <summary>
@@ -29,8 +39,9 @@ namespace Business
         /// </summary>
         /// <param name="reservation"></param>
         /// <returns></returns>
-        public bool Add(Reservation reservation)
+        public bool Add(Reservation reservation, List<Room> rooms)
         {
+            ReservationRoom(reservation, rooms);
             CalculateTotalReservation(reservation);
             return _reservationRepository.Add(reservation);
         }
@@ -49,10 +60,9 @@ namespace Business
         /// </summary>
         /// <param name="reservation"></param>
         /// <returns></returns>
-        private int GetPrice(Reservation reservation)
+        private double GetPrice(Reservation reservation)
         {
-            Price priceEnum = (Price)reservation.RoomType;
-            return (int)priceEnum;
+            return priceRoomType[(int)reservation.Room.RoomType];
         }
         /// <summary>
         /// Cálculo do valor total da diária
@@ -62,9 +72,9 @@ namespace Business
         {
             double reservationTotal = (double)reservation.TotalDays * (double)GetPrice(reservation);
 
-            if (reservation.TotalDays > 5)
+            if (reservation.TotalDays > DIARIAS_COM_DESCONTO)
             {
-                reservation.Total -= CalculateDiscount(reservation);
+                reservation.Total = CalculateDiscount(reservation, reservationTotal);
             }
             else
             {
@@ -77,10 +87,25 @@ namespace Business
         /// </summary>
         /// <param name="reservation"></param>
         /// <returns></returns>
-        private double CalculateDiscount(Reservation reservation)
+        private double CalculateDiscount(Reservation reservation, double reservationTotal)
         {
-            double reservationTotal = (double)reservation.TotalDays * (double)GetPrice(reservation);
-            return reservationTotal * DESCONTO_DEZ_POR_CENTO;
+            double discount =  reservationTotal * DESCONTO_DEZ_POR_CENTO;
+            return reservationTotal - discount;
+        }
+
+        /// <summary>
+        /// Método responsável por realizar a reserva do quarto
+        /// </summary>
+        private void ReservationRoom(Reservation reservation, List<Room> rooms)
+        {
+            rooms.ForEach(x =>
+            {
+                if (x.RoomType == reservation.Room.RoomType)
+                {
+                    x.AmountBusy = reservation.Room.AmountBusy;
+                    x.AmountAvailable = x.AmountAvailable - x.AmountBusy;
+                }
+            });
         }
     }
 }

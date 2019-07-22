@@ -10,18 +10,19 @@ using System.Text;
 namespace Application
 {
     /// <summary>
-    /// É responsável por chamar a classe que possue os menus - view,
+    /// É responsável por chamar a classe que exibi os menus - view,
     /// retornar objetos após a entrada do usuário
     /// e chamar a classe de serviço - no caso projeto services
     /// </summary>
     public class ViewIntermediate
     {
-        private const int OPTION_EXIT = 8;
+        private const int OPTION_EXIT = 7;
         private RoomService roomService;
         private ReservationService reservationService;
         private List<Room> rooms;
+        private List<Reservation> reservations;
         private LockViewModel lockViewModel;
-        private LockViewModel unlockViewModel;
+        private UnlockViewModel unlockViewModel;
 
         /// <summary>
         /// Criação dos objetos de services e business
@@ -48,28 +49,30 @@ namespace Application
                 switch (option)
                 {
                     case 1:
-                        Console.Clear();
+                        View.ClearScreen();
                         rooms = roomService.Insert(View.RegisterRooms());
                         break;
                     case 2:
-                        Console.Clear();
+                        View.ClearScreen();
                         rooms = roomService.Lock(View.LockRooms());
                         break;
                     case 3:
-                        Console.Clear();
+                        View.ClearScreen();
                         rooms = roomService.UnLock(View.UnLockRooms());
                         break;
                     case 4:
-                        Console.Clear();
+                        View.ClearScreen();
                         View.ListRooms(rooms);
                         break;
                     case 5:
-                        Console.Clear();
-                        reservationService.Insert(View.RegisterReservation());
+                        View.ClearScreen();
+                        reservations = reservationService.Insert(View.RegisterReservation(), rooms);
+                        View.ClearScreen();
+                        View.ReportReservations(reservations);
                         break;
                     case 6:
-                        Console.Clear();
-                        View.ReportRooms(rooms);View.ReportRooms(rooms);
+                        View.ClearScreen();
+                        View.ReportRooms(rooms);
                         break;
                     default:
                         break;

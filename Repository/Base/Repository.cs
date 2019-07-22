@@ -8,7 +8,7 @@ namespace Repository.Base
 {
     /// <summary>
     /// Repositório base, responsável pelas operações de
-    /// adição, listagem de qualquer entidade
+    /// adição e listagem de qualquer entidade
     /// Há uma verificação no construtor para seguir o padrão singleton
     /// </summary>
     /// <typeparam name="T"></typeparam>
@@ -16,6 +16,7 @@ namespace Repository.Base
     {
         public static List<T> _list { get; set; }
         public static object _syncObj = new object();
+
         public Repository()
         {
             if(_list == null)

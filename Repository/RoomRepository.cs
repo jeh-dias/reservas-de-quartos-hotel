@@ -12,15 +12,9 @@ namespace Repository
     /// </summary>
     public class RoomRepository : Repository<Room>
     {
-
-        //public Room GetType(RoomType roomType)
-        //{
-        //    return _list.Find(x => x.RoomType.Equals(roomType));
-        //}
-
         /// <summary>
-        /// Recebe a view model com os dados do quarto a ser bloqueado
-        /// e insere a quantidade de bloqueio
+        /// Responsável por receber a view model com os dados do quarto a ser bloqueiado
+        /// e realizar o bloqueio
         /// </summary>
         /// <param name="lockViewModel"></param>
         /// <returns></returns>
@@ -30,8 +24,8 @@ namespace Repository
             {
                 if (x.RoomType == lockViewModel.RoomType)
                 {
-                    x.Locked = true;
                     x.AmountLock = lockViewModel.Amount;
+                    x.AmountAvailable -= lockViewModel.Amount;
                 }
             });
 
@@ -39,8 +33,8 @@ namespace Repository
         }
 
         /// <summary>
-        /// Recebe a view model com os dados do quarto a ser liberado
-        /// e insere a quantidade de bloqueio
+        /// Responsável por receber a view model com os dados do quarto a ser liberado
+        /// e realizar a liberação
         /// </summary>
         /// <param name="lockViewModel"></param>
         /// <returns></returns>
@@ -50,8 +44,8 @@ namespace Repository
             {
                 if (x.RoomType == unlockViewModel.RoomType)
                 {
-                    x.Locked = false;
                     x.AmountLock = (x.AmountLock - unlockViewModel.Amount);
+                    x.AmountAvailable += unlockViewModel.Amount;
                 }
             });
 

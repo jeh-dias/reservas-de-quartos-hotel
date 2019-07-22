@@ -10,7 +10,7 @@ namespace Business.Interfaces
     /// </summary>
     public interface IReservationBusiness
     {
-        bool Add(Reservation reservation);
+        bool Add(Reservation reservation, List<Room> rooms);
 
         List<Reservation> GetList();
     }
