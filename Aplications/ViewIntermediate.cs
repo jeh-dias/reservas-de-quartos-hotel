@@ -16,6 +16,9 @@ namespace Application
     /// </summary>
     public class ViewIntermediate
     {
+        /// <summary>
+        /// Opção para sair do menu do sistema
+        /// </summary>
         private const int OPTION_EXIT = 7;
         private RoomService roomService;
         private ReservationService reservationService;
@@ -71,6 +74,8 @@ namespace Application
                     case 6:
                         View.ClearScreen();
                         View.ReportRooms(rooms);
+                        break;
+                    case 7:
                         break;
                     default:
                         break;
