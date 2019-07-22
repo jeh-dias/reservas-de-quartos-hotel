@@ -9,6 +9,11 @@ using System.Text;
 
 namespace Application
 {
+    /// <summary>
+    /// É responsável por chamar a classe que possue os menus - view,
+    /// retornar objetos após a entrada do usuário
+    /// e chamar a classe de serviço - no caso projeto services
+    /// </summary>
     public class ViewIntermediate
     {
         private const int OPTION_EXIT = 8;
@@ -18,13 +23,20 @@ namespace Application
         private LockViewModel lockViewModel;
         private LockViewModel unlockViewModel;
 
+        /// <summary>
+        /// Criação dos objetos de services e business
+        /// </summary>
         public ViewIntermediate()
         {
             roomService = new RoomService(new RoomBusiness());
             reservationService = new ReservationService(new ReservationBusiness());
         }
 
-        public void StartReservation()
+        /// <summary>
+        /// Chamada para service e operações que estão na view
+        /// como relatório e listagem dos quartos
+        /// </summary>
+        public void StartChoices()
         {
             int option = 0;
 
@@ -49,7 +61,7 @@ namespace Application
                         break;
                     case 4:
                         Console.Clear();
-                        ListRooms(rooms);
+                        View.ListRooms(rooms);
                         break;
                     case 5:
                         Console.Clear();
@@ -57,22 +69,12 @@ namespace Application
                         break;
                     case 6:
                         Console.Clear();
-                        ReportRooms(rooms);
+                        View.ReportRooms(rooms);View.ReportRooms(rooms);
                         break;
                     default:
                         break;
                 }
             }
-        }
-
-        public static void ListRooms(List<Room> rooms)
-        {
-            View.ListRooms(rooms);
-        }
-
-        public static void ReportRooms(List<Room> rooms)
-        {
-            View.ReportRooms(rooms);
         }
     }
 }

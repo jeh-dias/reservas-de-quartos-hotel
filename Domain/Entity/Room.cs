@@ -2,6 +2,9 @@
 
 namespace Domain
 {
+    /// <summary>
+    /// Classe responsável por representar a entidade quarto
+    /// </summary>
     public class Room
     {
         public int Amount { get; set; }

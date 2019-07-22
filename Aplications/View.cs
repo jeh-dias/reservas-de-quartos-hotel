@@ -6,8 +6,14 @@ using System.Text;
 
 namespace Application
 {
+    /// <summary>
+    /// Método responsável por todos os menus que existem no sistema
+    /// </summary>
     public class View
     {
+        /// <summary>
+        /// Menu Inicial
+        /// </summary>
         public static void MenuInitial()
         {
             Console.WriteLine("         Sistema para reservas de quartos de um hotel ");
@@ -26,6 +32,10 @@ namespace Application
             Console.Write("         OP -  ");
         }
 
+        /// <summary>
+        /// Menu que realiza o cadastro de quartos
+        /// </summary>
+        /// <returns></returns>
         public static Room RegisterRooms()
         {
             Console.Write(" Entre com a quantidade ");
@@ -36,10 +46,15 @@ namespace Application
             return new Room
             {
                 Amount = amount,
-                RoomType = roomtype
+                RoomType = roomtype,
+                AmountAvailable = amount
             };
         }
 
+        /// <summary>
+        /// Menu que realiza o bloqueio de quartos
+        /// </summary>
+        /// <returns></returns>
         public static LockViewModel LockRooms()
         {
             Console.Write(" Entre com a quantidade ");
@@ -50,6 +65,10 @@ namespace Application
             return new LockViewModel(amount, roomtype);
         }
 
+        /// <summary>
+        /// Menu que realiza a liberação dos quartos
+        /// </summary>
+        /// <returns></returns>
         public static UnlockViewModel UnLockRooms()
         {
             Console.Write(" Entre com a quantidade ");
@@ -60,6 +79,10 @@ namespace Application
             return new UnlockViewModel(amount, roomtype);
         }
 
+        /// <summary>
+        /// Menu responsável pela reserva de quartos
+        /// </summary>
+        /// <returns></returns>
         public static Reservation RegisterReservation()
         {
             Console.WriteLine(" Entre com a data de inicio: ");
@@ -70,15 +93,17 @@ namespace Application
             //string client = (String)Console.ReadLine();
             Console.WriteLine(" Entre com o tipo de quarto: ");
             RoomType roomType = (RoomType)Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine(" Entre com a quantidade de quartos: ");
+            int amountRoom = (int)Convert.ToInt32(Console.ReadLine());
 
-            return new Domain.Reservation
-            {
-                DateStart = dateStart,
-                DateEnd = dateEnd,
-                roomType = roomType
-            };
+            return new Reservation(dateStart, dateEnd, amountRoom, roomType);
         }
 
+
+        /// <summary>
+        /// Menu responsável por listar os quartos, inserindo as informações
+        /// tipo e quantidade
+        /// <param name="rooms"></param>
         public static void ListRooms(List<Room> rooms)
         {
             Console.Write("============Lista de Quartos ==========================");
@@ -91,6 +116,11 @@ namespace Application
             Console.WriteLine("========================================================");
         }
 
+        /// <summary>
+        /// Menu responsável pelo relatório de quartos
+        /// Informações: tipo, travado, liberado e ocupado
+        /// </summary>
+        /// <param name="rooms"></param>
         public static void ReportRooms(List<Room> rooms)
         {
             Console.Write("============Relatório de Quartos ==========================");

@@ -7,9 +7,18 @@ using Domain.ViewModel;
 
 namespace Services
 {
+    /// <summary>
+    /// Classe responsável por receber informações da view
+    /// e enviar para a classe de regra de negócio
+    /// </summary>
     public class RoomService
     {
         private readonly IRoomBusiness _roomBusiness;
+        /// <summary>
+        /// A interface IRoomBusiness é responsável
+        /// por chamar o repositório
+        /// </summary>
+        /// <param name="roomBusiness"></param>
         public RoomService(IRoomBusiness roomBusiness)
         {
             _roomBusiness = roomBusiness;

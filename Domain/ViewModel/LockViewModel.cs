@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Domain.ViewModel
 {
+    /// <summary>
+    /// ViewModel responsável por tipar os dados de um quarto bloqueado
+    /// </summary>
     public sealed class LockViewModel
     {
         public int Amount { get; private set; }

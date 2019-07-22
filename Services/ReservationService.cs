@@ -7,6 +7,10 @@ using System.Text;
 
 namespace Services
 {
+    /// <summary>
+    /// Classe responsável por receber dados da reserva passados na view
+    /// e enviar estes para a classe de regra de negócio
+    /// </summary>
     public class ReservationService
     {
 

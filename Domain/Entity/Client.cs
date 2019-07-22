@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Domain
 {
+    /// <summary>
+    /// Classe responsável por representar a entidade de cliente
+    /// </summary>
     public class Client
     {
         public string Name { get; set; }
