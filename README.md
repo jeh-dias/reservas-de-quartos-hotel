@@ -19,4 +19,3 @@ namespace Aplications
     }
 }
 ```
-![Nuget](https://img.shields.io/nuget/dt/LibraryCalc03.svg)
