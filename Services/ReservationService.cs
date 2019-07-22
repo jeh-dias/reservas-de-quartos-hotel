@@ -13,8 +13,8 @@ namespace Services
     /// </summary>
     public class ReservationService
     {
-
         private readonly IReservationBusiness _reservationBusiness;
+
         public ReservationService(IReservationBusiness reservationBusiness)
         {
             _reservationBusiness = reservationBusiness;

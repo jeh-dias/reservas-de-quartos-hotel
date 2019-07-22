@@ -21,8 +21,6 @@ namespace Application
         private ReservationService reservationService;
         private List<Room> rooms;
         private List<Reservation> reservations;
-        private LockViewModel lockViewModel;
-        private UnlockViewModel unlockViewModel;
 
         /// <summary>
         /// Criação dos objetos de services e business

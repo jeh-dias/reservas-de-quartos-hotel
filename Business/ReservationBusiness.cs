@@ -24,8 +24,6 @@ namespace Business
         private ReservationRepository _reservationRepository;
         private Dictionary<int, double> priceRoomType = new Dictionary<int, double>();
 
-
-
         public ReservationBusiness()
         {
             _reservationRepository = new ReservationRepository();

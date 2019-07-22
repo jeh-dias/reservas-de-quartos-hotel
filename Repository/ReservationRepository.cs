@@ -11,6 +11,5 @@ namespace Repository
     /// </summary>
     public class ReservationRepository : Repository<Reservation>
     {
-
     }
 }

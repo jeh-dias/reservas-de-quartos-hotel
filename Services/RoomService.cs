@@ -27,21 +27,18 @@ namespace Services
         public List<Room> Insert(Room room)
         {
             _roomBusiness.Add(room);
-
             return _roomBusiness.GetList();
         }
 
         public List<Room> Lock(LockViewModel lockViewModel)
         {
             _roomBusiness.Lock(lockViewModel);
-
             return _roomBusiness.GetList();
         }
 
         public List<Room> UnLock(UnlockViewModel unlockViewModel)
         {
             _roomBusiness.UnLock(unlockViewModel);
-
             return _roomBusiness.GetList();
         }
     }

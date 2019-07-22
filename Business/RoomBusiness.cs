@@ -25,7 +25,6 @@ namespace Business
         /// <returns></returns>
         public bool Add(Room room)
         {
-
             return _roomRepository.Add(room);
         }
 
@@ -45,7 +44,6 @@ namespace Business
         /// <returns></returns>
         public bool UnLock(UnlockViewModel unlockViewModel)
         {
-
             return _roomRepository.UnLock(unlockViewModel);
         }
 

@@ -48,7 +48,6 @@ namespace Repository
                     x.AmountAvailable += unlockViewModel.Amount;
                 }
             });
-
             return true;
         }
     }
