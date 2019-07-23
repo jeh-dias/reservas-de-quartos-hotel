@@ -22,7 +22,7 @@ namespace Business
         private const double DIARIAS_COM_DESCONTO = 5;
 
         private ReservationRepository _reservationRepository;
-        private Dictionary<int, double> priceRoomType = new Dictionary<int, double>();
+        private static Dictionary<int, double> priceRoomType = new Dictionary<int, double>();
 
         public ReservationBusiness()
         {
@@ -58,7 +58,7 @@ namespace Business
         /// </summary>
         /// <param name="reservation"></param>
         /// <returns></returns>
-        private double GetPrice(Reservation reservation)
+        private static double GetPrice(Reservation reservation)
         {
             return priceRoomType[(int)reservation.Room.RoomType];
         }
@@ -66,7 +66,7 @@ namespace Business
         /// Cálculo do valor total da diária
         /// </summary>
         /// <param name="reservation"></param>
-        private void CalculateTotalReservation(Reservation reservation)
+        private static void CalculateTotalReservation(Reservation reservation)
         {
             double reservationTotal = (double)reservation.TotalDays * (double)GetPrice(reservation);
 
@@ -85,7 +85,7 @@ namespace Business
         /// </summary>
         /// <param name="reservation"></param>
         /// <returns></returns>
-        private double CalculateDiscount(Reservation reservation, double reservationTotal)
+        private static double CalculateDiscount(Reservation reservation, double reservationTotal)
         {
             double discount =  reservationTotal * DESCONTO_DEZ_POR_CENTO;
             return reservationTotal - discount;
@@ -94,7 +94,7 @@ namespace Business
         /// <summary>
         /// Método responsável por realizar a reserva do quarto
         /// </summary>
-        private void ReservationRoom(Reservation reservation, List<Room> rooms)
+        private static void ReservationRoom(Reservation reservation, List<Room> rooms)
         {
             rooms.ForEach(x =>
             {
