@@ -25,5 +25,9 @@ namespace Domain
             TotalDays = DateEnd.Subtract(DateStart).Days;
             Client = client;
         }
+
+        public Reservation()
+        {
+        }
     }
 }

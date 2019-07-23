@@ -9,10 +9,10 @@ using Xunit;
 
 namespace Tests
 {
-    public class RoomTest
+    public class RoomServiceTest
     {
         [Fact]
-        public void RoomTestSucesso()
+        public void RoomTestSucess()
         {
             var roomBusinessMock = new Mock<IRoomBusiness>();
             roomBusinessMock.Setup(
@@ -20,8 +20,8 @@ namespace Tests
 
             var roomsExpectancy = new List<Room>
             {
-                new Room() { Amount = 10, AmountAvailable = 10},
-                new Room() { Amount = 20, AmountAvailable = 20 }
+                new Room() { Amount = 10, AmountAvailable = 10, RoomType = RoomType.Single},
+                new Room() { Amount = 20, AmountAvailable = 20, RoomType = RoomType.Single }
         };
 
             roomBusinessMock.Setup(a => a.GetList()).Returns(roomsExpectancy);
@@ -36,6 +36,7 @@ namespace Tests
             {
                 Assert.Equal(roomsExpectancy[i].Amount, rooms[i].Amount);
                 Assert.Equal(roomsExpectancy[i].AmountAvailable, rooms[i].AmountAvailable);
+                Assert.Equal(roomsExpectancy[i].RoomType, rooms[i].RoomType);
             }
         }
     }
